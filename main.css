@@ -1,0 +1,12 @@
+.cardContainer {
+  display:flex;
+  flex-wrap: wrap;
+
+}
+body {
+  text-align: center;
+}
+.nameColor {
+  background-color: lightgrey;
+  font-weight: bold;
+}
