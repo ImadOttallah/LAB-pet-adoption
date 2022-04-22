@@ -226,50 +226,103 @@ pets.forEach ((item,i) =>
 
 console.log(pets)
 
-  const fullHouse = document.querySelector("#fullHouse");
+  const fullHouse = document.querySelector("#landing-page");
   let domString = "";
   for (const dog of pets) {
-
     domString += 
-//     <div class="card" style="width: 18rem;">
-//   <div class="card-body">
-//     <h5 class="card-title nameColor">${dog.name}</h5>
-//     <img src="${dog.imageUrl}" class="card-img-top" alt="...">
-//   </div>
-//   <ul class="list-group list-group-flush">
-//     <li class="list-group-item">${dog.color}</li>
-//     <li class="list-group-item">A second item</li>
-//     <li class="list-group-item">A third item</li>
-//   </ul>
-//   <div class="card-body">
-//     <a href="#" class="card-link">Card link</a>
-//     <a href="#" class="card-link">Another link</a>
-//   </div>
-// </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    `<div class="card" style="width: 18rem;">
-    <div class="card-body">
-    <p class="card-text nameColor">${dog.name}</p>
+`<div class="card item" style="width: 18rem;">
+  <div class="card-body">
+  <header class="nameColor">${dog.name}</header>
     <img src="${dog.imageUrl}" class="card-img-top" alt="...">
-      <p class="card-text">
-      ${dog.color}
-      </p>
-      <p class="card-text">
-      ${dog.specialSkill}
-      </p>
-      <p class="card-text colorBox">
-      ${dog.type}
-      </p>
+  <span class="caption">${dog.color}</span>
+  <p>${dog.specialSkill}</p>
     </div>
-  </div>`;
+<footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
+</div>`
+}
+fullHouse.innerHTML += domString;
+
+
+
+// button function below
+
+// const button = document.querySelector("#cat-btn");
+// button.addEventListener('click', () => {
+//   console.log('TEST!');
+// })
+
+let update= ""
+function adoptAnimals(event) {
+  update =""
+  if (event.target.id === "all-btn"){
+    for (const dog of pets) {
+      update += 
+  `<div class="card item" style="width: 18rem;">
+    <div class="card-body">
+    <header class="nameColor">${dog.name}</header>
+      <img src="${dog.imageUrl}" class="card-img-top" alt="...">
+    <span class="caption">${dog.color}</span>
+    <p>${dog.specialSkill}</p>
+      </div>
+  <footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
+  </div>`
   }
-  fullHouse.innerHTML += domString;
+  } else {
+    for (const dog of pets) {
+      let animalChosen = ""
+      if (event.target.id === "dog-btn") {
+        animalChosen = "dog"
+      }
+      if (event.target.id === "cat-btn") {
+        animalChosen = "cat"
+      }
+      if (event.target.id === "dino-btn") {
+        animalChosen = "dino"
+      }
+      if (dog.type === animalChosen) {
+        update += 
+        `<div class="card item" style="width: 18rem;">
+          <div class="card-body">
+          <header class="nameColor">${dog.name}</header>
+            <img src="${dog.imageUrl}" class="card-img-top" alt="...">
+          <span class="caption">${dog.color}</span>
+          <p>${dog.specialSkill}</p>
+            </div>
+        <footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
+        </div>`
+      }
+    }
+  }
+  fullHouse.innerHTML = update;
+}
+document.querySelector("#cat-btn").addEventListener("click", adoptAnimals);
+document.querySelector("#dog-btn").addEventListener("click", adoptAnimals);
+document.querySelector("#dino-btn").addEventListener("click", adoptAnimals);
+document.querySelector("#all-btn").addEventListener("click", adoptAnimals);
+  
+
+
+
+
+
+
+
+
+
+
+  
+  //   `<div class="card" style="width: 18rem;">
+  //   <div class="card-body">
+  //   <p class="card-text nameColor">${dog.name}</p>
+  //   <img src="${dog.imageUrl}" class="card-img-top" alt="...">
+  //     <p class="card-text">
+  //     ${dog.color}
+  //     </p>
+  //     <p class="card-text">
+  //     ${dog.specialSkill}
+  //     </p>
+  //     <div class="bottomFeeder"><p class="card-text bottomBox">
+  //     ${dog.type}
+  //     </p></div>
+  //   </div>
+  // </div>`;

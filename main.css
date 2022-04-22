@@ -1,12 +1,63 @@
 .cardContainer {
   display:flex;
   flex-wrap: wrap;
-
 }
 body {
   text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  padding: 5px;
 }
 .nameColor {
   background-color: lightgrey;
   font-weight: bold;
+  margin: 0px;
+}
+img {
+  border: solid 2px black;
+  padding: 5px;
+  margin: 5px;
+}
+.color-dog {
+  background-color: rgb(169, 240, 169);
+  color: green;
+}
+
+.color-cat {
+  background-color: rgb(156, 217, 221);
+  color: blue;
+}
+
+.color-dino {
+  background-color: rgb(182, 174, 103);
+  color: rgb(209, 149, 19);
+}
+
+.cat-btn-color {
+  background-color: rgb(156, 217, 221);
+  color: white;
+}
+
+.dog-btn-color {
+  background-color: rgb(169, 240, 169);
+  color: green;
+}
+
+.dino-btn-color {
+  background-color: rgb(182, 174, 103);
+  color: rgb(209, 149, 19);
+}
+
+.caption {
+  display: block;
+}
+
+.navigation-btn {
+  display:flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
 }
