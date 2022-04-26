@@ -211,118 +211,236 @@ const pets = [
     }
   ];
 
-// for (const color of pets) {
-//   if (pets.type === "cat") {
-//     console.log("me")
-//   } else {
-//     console.log("test")
+
+// Utility Function //
+const renderToDom = (divId, textToRender) => {
+  const selectedElement = document.querySelector(divId);
+  selectedElement.innerHTML = textToRender;
+};
+
+// *********  HTML COMPONENT FUNCTIONS  ********* //
+// Add Pet Button / Modal
+const addPetModal = () => {
+  const domString = `
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#add-pet">
+    Submit Pet
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="add-pet" tabindex="-1" aria-labelledby="add-pet" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Submit Pet</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modal-body">
+          <form>
+          <div class="form-floating mb-3">
+            <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="petName" aria-label="Pet Name" required>
+            <label for="videoId">Pet Name</label>
+          </div>
+      
+          <div class="form-floating mb-3">
+            <input class="form-control form-control-lg" type="text" placeholder="Color" id="color" aria-label="color" required>
+            <label for="color">Color</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input class="form-control form-control-lg" type="text" placeholder="skill" id="skill" aria-label="skill" required>
+            <label for="skill">Special Skill</label>
+          </div>
+      
+          <div class="form-floating mb-3">
+            <select class="form-select form-control-lg" id="type" aria-label="type" required>
+              <option value="">Select a Type</option>
+              <option value="html">Cat</option>
+              <option value="css">Dog</option>
+              <option value="javascript">Dino</option>
+          
+            </select>
+            <label for="type">Type</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input class="form-control form-control-lg" type="text" placeholder="image" id="image" aria-label="image" required>
+            <label for="image">Image</label>
+          </div>
+      
+          <button 
+            type="submit" 
+            class="btn btn-success" 
+          >
+            Submit
+          </button>
+        </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  renderToDom('#createBtnContainer', domString);
+};
+
+// Pet Button Row
+const filterButtons = () => {
+  const domString = `
+  <div class="navigation-btn">
+    <button class="btn btn-secondary btn-lg buttonRow" id="cats">Cats</button>
+    <button class="btn btn-secondary btn-lg buttonRow" id="dogs">Dogs</button>
+    <button class="btn btn-secondary btn-lg buttonRow" id="dinos">Dinos</button>
+    <button class="btn btn-secondary btn-lg buttonRow" id="all">All</button>
+  </div>
+  `;
+  renderToDom('#filterContainer', domString);
+};
+
+// Cards
+const cardsOnDom = (array) => {
+  let domString = '';
+  for (const item of array) {
+    domString += 
+    `<div class="card item" style="width: 18rem;">
+  <div class="card-body">
+  <header class="nameColor">${item.name}</header>
+    <img src="${item.imageUrl}" class="card-img-top" alt="...">
+  <span class="caption">${item.color}</span>
+  <p>${item.specialSkill}</p>
+    </div>
+<footer class="list-group-item color-${item.type}">${item.type}</footer>  
+</div>`
+};
+  console.log(pets)
+  renderToDom('#cardContainer', domString);
+};
+
+
+const eventListeners = () => {
+  // Bootstrap for grabbing modal so can manually open and close
+  const formModal = new bootstrap.Modal(document.querySelector('#add-pet'))};
+  
+  // FILTER BUTTON ROW
+  document.querySelector('#filterContainer').addEventListener('click', (e) => {
+    console.log("You clicked a filter button", e.target.id);
+    if (e.target.id === "all"){
+      cardsOnDom(pets);
+    } else if (e.target.id === "cats") {
+      const cats = pets.filter(taco => taco.type === "cat");
+      cardsOnDom(cats);
+      // call function
+      //.filter is a method on arrays that allow us to filter and search on condition 
+    } else if (e.target.id === "dogs") {
+      const dogs = pets.filter(taco => taco.type === "dog");
+      cardsOnDom(dogs);
+    } else if (e.target.id) {
+      const dinos = pets.filter(taco => taco.type === "dino");
+      cardsOnDom(dinos);
+    } 
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const startApp = () => {
+  addPetModal();
+  filterButtons();
+  cardsOnDom(pets);
+  eventListeners(); // always last
+};
+
+startApp();
+
+
+
+
+
+
+
+
+
+// pets.forEach ((item,i) =>
+// {item.id = i +1});
+
+// console.log(pets)
+
+//   const fullHouse = document.querySelector("#landing-page");
+//   let domString = "";
+//   for (const dog of pets) {
+//     domString += 
+// `<div class="card item" style="width: 18rem;">
+//   <div class="card-body">
+//   <header class="nameColor">${dog.name}</header>
+//     <img src="${dog.imageUrl}" class="card-img-top" alt="...">
+//   <span class="caption">${dog.color}</span>
+//   <p>${dog.specialSkill}</p>
+//     </div>
+// <footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
+// </div>`
+// }
+// fullHouse.innerHTML += domString;
+
+// let update= ""
+// function adoptAnimals(event) {
+//   update =""
+//   if (event.target.id === "all-btn"){
+//     for (const dog of pets) {
+//       update += 
+//   `<div class="card item" style="width: 18rem;">
+//     <div class="card-body">
+//     <header class="nameColor">${dog.name}</header>
+//       <img src="${dog.imageUrl}" class="card-img-top" alt="...">
+//     <span class="caption">${dog.color}</span>
+//     <p>${dog.specialSkill}</p>
+//       </div>
+//   <footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
+//   </div>`
 //   }
+//   } else {
+//     for (const dog of pets) {
+//       let animalChosen = ""
+//       if (event.target.id === "dog-btn") {
+//         animalChosen = "dog"
+//       }
+//       if (event.target.id === "cat-btn") {
+//         animalChosen = "cat"
+//       }
+//       if (event.target.id === "dino-btn") {
+//         animalChosen = "dino"
+//       }
+//       if (dog.type === animalChosen) {
+//         update += 
+//         `<div class="card item" style="width: 18rem;">
+//           <div class="card-body">
+//           <header class="nameColor">${dog.name}</header>
+//             <img src="${dog.imageUrl}" class="card-img-top" alt="...">
+//           <span class="caption">${dog.color}</span>
+//           <p>${dog.specialSkill}</p>
+//             </div>
+//         <footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
+//         </div>`
+//       }
+//     }
+//   }
+//   fullHouse.innerHTML = update;
 // }
 
 
 
-pets.forEach ((item,i) =>
-{item.id = i +1});
-
-console.log(pets)
-
-  const fullHouse = document.querySelector("#landing-page");
-  let domString = "";
-  for (const dog of pets) {
-    domString += 
-`<div class="card item" style="width: 18rem;">
-  <div class="card-body">
-  <header class="nameColor">${dog.name}</header>
-    <img src="${dog.imageUrl}" class="card-img-top" alt="...">
-  <span class="caption">${dog.color}</span>
-  <p>${dog.specialSkill}</p>
-    </div>
-<footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
-</div>`
-}
-fullHouse.innerHTML += domString;
-
-
-
-// button function below
-
-// const button = document.querySelector("#cat-btn");
-// button.addEventListener('click', () => {
-//   console.log('TEST!');
-// })
-
-let update= ""
-function adoptAnimals(event) {
-  update =""
-  if (event.target.id === "all-btn"){
-    for (const dog of pets) {
-      update += 
-  `<div class="card item" style="width: 18rem;">
-    <div class="card-body">
-    <header class="nameColor">${dog.name}</header>
-      <img src="${dog.imageUrl}" class="card-img-top" alt="...">
-    <span class="caption">${dog.color}</span>
-    <p>${dog.specialSkill}</p>
-      </div>
-  <footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
-  </div>`
-  }
-  } else {
-    for (const dog of pets) {
-      let animalChosen = ""
-      if (event.target.id === "dog-btn") {
-        animalChosen = "dog"
-      }
-      if (event.target.id === "cat-btn") {
-        animalChosen = "cat"
-      }
-      if (event.target.id === "dino-btn") {
-        animalChosen = "dino"
-      }
-      if (dog.type === animalChosen) {
-        update += 
-        `<div class="card item" style="width: 18rem;">
-          <div class="card-body">
-          <header class="nameColor">${dog.name}</header>
-            <img src="${dog.imageUrl}" class="card-img-top" alt="...">
-          <span class="caption">${dog.color}</span>
-          <p>${dog.specialSkill}</p>
-            </div>
-        <footer class="list-group-item color-${dog.type}">${dog.type}</footer>  
-        </div>`
-      }
-    }
-  }
-  fullHouse.innerHTML = update;
-}
-document.querySelector("#cat-btn").addEventListener("click", adoptAnimals);
-document.querySelector("#dog-btn").addEventListener("click", adoptAnimals);
-document.querySelector("#dino-btn").addEventListener("click", adoptAnimals);
-document.querySelector("#all-btn").addEventListener("click", adoptAnimals);
+// document.querySelector("#cat-btn").addEventListener("click", adoptAnimals);
+// document.querySelector("#dog-btn").addEventListener("click", adoptAnimals);
+// document.querySelector("#dino-btn").addEventListener("click", adoptAnimals);
+// document.querySelector("#all-btn").addEventListener("click", adoptAnimals);
   
-
-
-
-
-
-
-
-
-
-
-  
-  //   `<div class="card" style="width: 18rem;">
-  //   <div class="card-body">
-  //   <p class="card-text nameColor">${dog.name}</p>
-  //   <img src="${dog.imageUrl}" class="card-img-top" alt="...">
-  //     <p class="card-text">
-  //     ${dog.color}
-  //     </p>
-  //     <p class="card-text">
-  //     ${dog.specialSkill}
-  //     </p>
-  //     <div class="bottomFeeder"><p class="card-text bottomBox">
-  //     ${dog.type}
-  //     </p></div>
-  //   </div>
-  // </div>`;

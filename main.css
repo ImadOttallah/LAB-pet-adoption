@@ -1,4 +1,79 @@
-.cardContainer {
+
+body {
+  background-color: #f1cbcb;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+#createBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .buttonRow {
+  min-width: 200px;
+} */
+
+
+#cardContainer {
+  display:flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.navigation-btn {
+  display:flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .cardContainer {
   display:flex;
   flex-wrap: wrap;
 }
@@ -51,6 +126,10 @@ img {
   color: rgb(209, 149, 19);
 }
 
+.submit-btn-color {
+  background-color: rgb(25, 16, 145);
+  color: rgb(221, 168, 218);
+}
 .caption {
   display: block;
 }
@@ -60,4 +139,4 @@ img {
   justify-content: center;
   padding: 10px;
   gap: 20px;
-}
+} */
