@@ -17,15 +17,24 @@ form {
   flex-direction: column;
 }
 
-/* .buttonRow {
-  min-width: 200px;
-} */
 
+.buttonRow {
+  min-width: 200px;
+}
 
 #cardContainer {
-  display:flex;
-  flex-wrap: wrap;
-  gap: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+.card {
+ margin-bottom: 20px;
+  padding: auto;
+  border: #080808 solid 2px;
+}
+.rcorners {
+  border-radius: 25px;
 }
 .navigation-btn {
   display:flex;
@@ -33,72 +42,27 @@ form {
   padding: 10px;
   gap: 20px;
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .cardContainer {
-  display:flex;
-  flex-wrap: wrap;
-}
-body {
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
-}
-
-p {
-  padding: 5px;
-}
 .nameColor {
   background-color: lightgrey;
   font-weight: bold;
   margin: 0px;
 }
+
+.btn-delete {
+  background-color: #e9e2da ;
+  border: #080808 1px solid;
+  float: right;
+  border-radius: 25px;
+  }
+
 img {
-  border: solid 2px black;
-  padding: 5px;
-  margin: 5px;
-}
+    border: solid 2px black;
+    margin-top: 5px;
+  }
+
 .color-dog {
-  background-color: rgb(169, 240, 169);
-  color: green;
+  background-color: rgb(240, 211, 169);
+  color: rgb(0, 0, 0);
 }
 
 .color-cat {
@@ -107,7 +71,7 @@ img {
 }
 
 .color-dino {
-  background-color: rgb(182, 174, 103);
+  background-color: rgb(169, 196, 127);
   color: rgb(209, 149, 19);
 }
 
@@ -122,9 +86,17 @@ img {
 }
 
 .dino-btn-color {
-  background-color: rgb(182, 174, 103);
+  background-color: rgb(169, 196, 127);
   color: rgb(209, 149, 19);
 }
+/*
+
+p {
+  padding: 5px;
+}
+
+
+
 
 .submit-btn-color {
   background-color: rgb(25, 16, 145);
