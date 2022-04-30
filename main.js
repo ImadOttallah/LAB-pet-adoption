@@ -221,6 +221,19 @@ const renderToDom = (divId, textToRender) => {
   const selectedElement = document.querySelector(divId);
   selectedElement.innerHTML = textToRender;
 };
+pets.forEach ((item,i) =>
+ {item.id = i +1});
+
+
+// const addId = () => {
+//   pets.forEach((item, index) => {
+//     // if (item.id === undefined)
+//     item.id = (index + 1).toString();
+//   });
+// };
+// const newId = () => {};
+
+
 
 // *********  HTML COMPONENT FUNCTIONS  ********* //
 // Add Pet Button / Modal
@@ -287,11 +300,11 @@ const addPetModal = () => {
 const filterButtons = () => {
   const domString = `
   <div class="navigation-btn">
-    <button class="btn btn-secondary btn-lg buttonRow" id="cats">Cats</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="dogs">Dogs</button>
+    <button class="btn btn-secondary btn-lg buttonRow cat-btn-color" id="cats">Cats</button>
+    <button class="btn btn-secondary btn-lg buttonRow dog-btn-color" id="dogs">Dogs</button>
     <button class="btn btn-secondary btn-lg buttonRow dino-btn-color" id="dinos">Dinos</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="all">All</button>
-    <button id="add-animal" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-pet">
+    <button class="btn btn-secondary btn-lg buttonRow clear-btn" id="all">All</button>
+    <button id="add-animal" type="button" class="btn btn-secondary add-all-btn" data-bs-toggle="modal" data-bs-target="#add-pet">
       Add New
     </button>
   </div>
